@@ -18,16 +18,16 @@ import ShippingReturns from "./Pages/ShippingReturns/ShippingReturns";
 import PrivacyPolicy from "./Pages/PrivacyPolicy/PrivacyPolicy";
 import OrderSuccess from "./Pages/OrderSuccess/OrderSuccess";
 import AdminOrders
-from "./pages/Admin/AdminOrders";
+from "./Pages/Admin/AdminOrders";
 import AdminDashboard
-from "./pages/Admin/AdminDashboard";
+from "./Pages/Admin/AdminDashboard";
 import AdminProducts
-from "./pages/Admin/AdminProducts";
+from "./Pages/Admin/AdminProducts";
 import AdminLogin
 from "./Pages/Admin/AdminLogin";
 
 import AdminRoute
-from "./components/AdminRoute";
+from "./Components/AdminRoute";
 import AdminMessages
 from "./Pages/Admin/AdminMessages";
 
