@@ -30,6 +30,7 @@ import AdminRoute
 from "./Components/AdminRoute";
 import AdminMessages
 from "./Pages/Admin/AdminMessages";
+import MyOrders from "./Pages/MyOrders/MyOrders";
 
 
 function App() {
@@ -127,6 +128,11 @@ function App() {
 <Route
   path="/admin/messages"
   element={<AdminMessages />}
+/>
+
+<Route
+  path="/my-orders"
+  element={<MyOrders />}
 />
 
       </Routes>

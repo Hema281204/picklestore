@@ -92,6 +92,9 @@ function Navbar() {
               </span>
             )}
           </Link>
+          <Link to="/my-orders">
+  My Orders
+</Link>
 
         </div>
 
