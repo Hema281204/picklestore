@@ -15,10 +15,15 @@ function Cart() {
   } = useCart();
 
   const subtotal = cartItems.reduce(
-    (sum, item) =>
-      sum + item.price * item.quantity,
-    0
-  );
+  (total, item) =>
+    total +
+    (
+      item.prices?.["250g"] ||
+      item.price
+    ) *
+      item.quantity,
+  0
+);
 
   const shipping = subtotal > 999 ? 0 : 50;
 
@@ -90,8 +95,8 @@ function Cart() {
                       </p>
 
                       <p className="text-red-900 font-semibold mt-2">
-                        ₹{item.price}
-                      </p>
+  ₹{item.prices?.["250g"] || item.price}
+</p>
 
                     </div>
 
@@ -138,8 +143,11 @@ function Cart() {
                   <div className="flex flex-col items-center md:items-end gap-3">
 
                     <span className="font-bold text-xl">
-                      ₹{item.price * item.quantity}
-                    </span>
+  ₹{
+    (item.prices?.["250g"] || item.price) *
+    item.quantity
+  }
+</span>
 
                     <button
                       onClick={() =>
