@@ -360,11 +360,20 @@ const averageRating =
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
 
               <button
-                onClick={() => addToCart(product)}
-                className="bg-red-900 text-white py-4 rounded-xl font-medium hover:bg-red-800 transition"
-              >
-                Add To Cart
-              </button>
+  onClick={() =>
+    addToCart({
+      ...product,
+      weight,
+      price:
+        product.prices?.[weight] ||
+        product.price,
+      quantity,
+    })
+  }
+  className="bg-red-900 text-white py-4 rounded-xl font-medium hover:bg-red-800 transition"
+>
+  Add To Cart
+</button>
 
               <button
                 onClick={orderWhatsapp}

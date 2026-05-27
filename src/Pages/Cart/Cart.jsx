@@ -91,11 +91,11 @@ function Cart() {
                       </h2>
 
                       <p className="text-gray-500">
-                        250g
-                      </p>
+  {item.weight}
+</p>
 
                       <p className="text-red-900 font-semibold mt-2">
-  ₹{item.prices?.["250g"] || item.price}
+ ₹{item.price}
 </p>
 
                     </div>
@@ -143,10 +143,10 @@ function Cart() {
                   <div className="flex flex-col items-center md:items-end gap-3">
 
                     <span className="font-bold text-xl">
-  ₹{
-    (item.prices?.["250g"] || item.price) *
-    item.quantity
-  }
+ ₹{
+  item.price *
+  item.quantity
+}
 </span>
 
                     <button
