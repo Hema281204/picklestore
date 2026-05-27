@@ -107,7 +107,7 @@ const isWishlisted =
   <div className="flex items-center">
 
     <span className="text-2xl font-bold text-red-900">
-    ₹{Object.values(product.prices)[0]}
+      ₹{product.prices?.["250g"] || product.price}
     </span>
 
     <span className="text-gray-500 ml-2">
