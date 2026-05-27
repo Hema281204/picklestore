@@ -59,7 +59,7 @@ function Cart() {
 
               {cartItems.map((item) => (
                 <div
-                  key={item.id}
+                  key={`${item._id}-${item.weight}`}
                   className="
                     bg-white
                     rounded-2xl
@@ -106,7 +106,7 @@ function Cart() {
 
                     <button
                       onClick={() =>
-                        decreaseQuantity(item.id)
+                        decreaseQuantity(item._id)
                       }
                       className="
                         border
@@ -125,7 +125,7 @@ function Cart() {
 
                     <button
                       onClick={() =>
-                        increaseQuantity(item.id)
+                        increaseQuantity(item._id)
                       }
                       className="
                         border
@@ -151,7 +151,7 @@ function Cart() {
 
                     <button
                       onClick={() =>
-                        removeFromCart(item.id)
+                        removeFromCart(item._id)
                       }
                       className="
                         text-red-500

@@ -18,36 +18,39 @@ useEffect(() => {
   );
 }, [cartItems]);
   const addToCart = (product) => {
-    const existing = cartItems.find(
-      (item) => item.id === product.id
+  const existing =
+    cartItems.find(
+      (item) =>
+        item._id === product._id &&
+        item.weight === product.weight
     );
 
-    if (existing) {
-      setCartItems(
-        cartItems.map((item) =>
-          item.id === product.id
-            ? {
-                ...item,
-                quantity: item.quantity + 1,
-              }
-            : item
-        )
-      );
-    } else {
-      setCartItems([
-        ...cartItems,
-        {
-          ...product,
-          quantity: 1,
-        },
-      ]);
-    }
-  };
+  if (existing) {
+    setCartItems(
+      cartItems.map((item) =>
+        item._id === product._id &&
+        item.weight === product.weight
+          ? {
+              ...item,
+              quantity:
+                item.quantity +
+                product.quantity,
+            }
+          : item
+      )
+    );
+  } else {
+    setCartItems([
+      ...cartItems,
+      product,
+    ]);
+  }
+};
 
   const removeFromCart = (id) => {
     setCartItems(
       cartItems.filter(
-        (item) => item.id !== id
+        (item) => item._id !== id
       )
     );
   };
@@ -55,7 +58,7 @@ useEffect(() => {
   const increaseQuantity = (id) => {
     setCartItems(
       cartItems.map((item) =>
-        item.id === id
+        item._id === id
           ? {
               ...item,
               quantity: item.quantity + 1,
@@ -68,7 +71,7 @@ useEffect(() => {
   const decreaseQuantity = (id) => {
     setCartItems(
       cartItems.map((item) =>
-        item.id === id
+        item._id === id
           ? {
               ...item,
               quantity:
