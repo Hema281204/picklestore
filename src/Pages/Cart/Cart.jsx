@@ -17,11 +17,7 @@ function Cart() {
   const subtotal = cartItems.reduce(
   (total, item) =>
     total +
-    (
-      item.prices?.["250g"] ||
-      item.price
-    ) *
-      item.quantity,
+    item.price * item.quantity,
   0
 );
 
@@ -30,10 +26,13 @@ function Cart() {
   const total = subtotal + shipping;
 
   return (
-    <>
-      <Navbar />
+    <div className="min-h-screen flex flex-col">
 
-      <div className="max-w-6xl mx-auto px-4 py-10">
+  <Navbar />
+
+  <main className="flex-grow">
+
+    <div className="max-w-6xl mx-auto px-4 py-10">
 
         <h1 className="text-3xl md:text-4xl font-bold mb-10">
           Your Cart ({cartItems.length} Items)
@@ -106,7 +105,10 @@ function Cart() {
 
                     <button
                       onClick={() =>
-                        decreaseQuantity(item._id)
+                        decreaseQuantity(
+  item._id,
+  item.weight
+)
                       }
                       className="
                         border
@@ -125,7 +127,10 @@ function Cart() {
 
                     <button
                       onClick={() =>
-                        increaseQuantity(item._id)
+                        increaseQuantity(
+  item._id,
+  item.weight
+)
                       }
                       className="
                         border
@@ -151,7 +156,10 @@ function Cart() {
 
                     <button
                       onClick={() =>
-                        removeFromCart(item._id)
+                        removeFromCart(
+  item._id,
+  item.weight
+)
                       }
                       className="
                         text-red-500
@@ -234,9 +242,13 @@ function Cart() {
           </div>
         )}
 
-      </div>
-      <MiniFooter />
-    </>
+          </div>
+
+  </main>
+
+  <MiniFooter />
+
+</div>
   );
 }
 

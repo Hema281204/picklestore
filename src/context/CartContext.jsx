@@ -47,42 +47,51 @@ useEffect(() => {
   }
 };
 
-  const removeFromCart = (id) => {
+  const removeFromCart = (
+  id,
+  weight
+) => {
     setCartItems(
       cartItems.filter(
-        (item) => item._id !== id
+        (item) => !(
+  item._id === id &&
+  item.weight === weight
+)
       )
     );
   };
 
-  const increaseQuantity = (id) => {
-    setCartItems(
-      cartItems.map((item) =>
-        item._id === id
-          ? {
-              ...item,
-              quantity: item.quantity + 1,
-            }
-          : item
-      )
-    );
-  };
+  const increaseQuantity = (id, weight) => {
+  setCartItems(
+    cartItems.map((item) =>
+      item._id === id &&
+      item.weight === weight
+        ? {
+            ...item,
+            quantity: item.quantity + 1,
+          }
+        : item
+    )
+  );
+};
+  
 
-  const decreaseQuantity = (id) => {
-    setCartItems(
-      cartItems.map((item) =>
-        item._id === id
-          ? {
-              ...item,
-              quantity:
-                item.quantity > 1
-                  ? item.quantity - 1
-                  : 1,
-            }
-          : item
-      )
-    );
-  };
+  const decreaseQuantity = (id, weight) => {
+  setCartItems(
+    cartItems.map((item) =>
+      item._id === id &&
+      item.weight === weight
+        ? {
+            ...item,
+            quantity:
+              item.quantity > 1
+                ? item.quantity - 1
+                : 1,
+          }
+        : item
+    )
+  );
+};
 
   return (
     <CartContext.Provider

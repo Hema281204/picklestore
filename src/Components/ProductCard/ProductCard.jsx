@@ -123,24 +123,32 @@ const isWishlisted =
 </div>
 
         <button
-          onClick={(e) => {
-            e.stopPropagation();
-            addToCart(product);
-          }}
-          className="
-  w-full
-  mt-5
-  bg-red-900
-  text-white
-  py-3
-  rounded-xl
-  font-semibold
-  hover:bg-red-800
-  transition
-"
-        >
-          Add To Cart
-        </button>
+  onClick={(e) => {
+    e.stopPropagation();
+
+    addToCart({
+      ...product,
+      weight: "250g",
+      price:
+        product.prices?.["250g"] ||
+        product.price,
+      quantity: 1,
+    });
+  }}
+  className="
+    w-full
+    mt-5
+    bg-red-900
+    text-white
+    py-3
+    rounded-xl
+    font-semibold
+    hover:bg-red-800
+    transition
+  "
+>
+  Add To Cart
+</button>
       </div>
     </div>
   );
