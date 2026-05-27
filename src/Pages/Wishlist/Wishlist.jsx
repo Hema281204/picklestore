@@ -41,7 +41,7 @@ function Wishlist() {
                 </h2>
 
                 <p className="text-red-900 font-bold">
-                  ₹{item.price}
+                  ₹{item.prices?.["250g"] || item.price} / 250g
                 </p>
 
                 <button
