@@ -165,7 +165,7 @@ const uploadImage = async (
           },
         }
       );
-      alert(JSON.stringify(response.data));
+      
 
     setFormData({
       ...formData,
