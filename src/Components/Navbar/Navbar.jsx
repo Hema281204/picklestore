@@ -14,6 +14,9 @@ import {
   useState,
 } from "react";
 
+import { useCart } from "../../context/CartContext";
+import { useWishlist } from "../../context/WishlistContext";
+
 function Navbar() {
 
   const location =
@@ -22,6 +25,12 @@ function Navbar() {
   const [menuOpen,
     setMenuOpen] =
       useState(false);
+
+  const { cartItems } =
+    useCart();
+
+  const { wishlistItems } =
+    useWishlist();
 
   return (
 
@@ -47,9 +56,7 @@ function Navbar() {
             leading-tight
           "
         >
-          Andhra
-          
-          Pickles
+          Andhra Pickles
         </Link>
 
         {/* Desktop Menu */}
@@ -75,18 +82,78 @@ function Navbar() {
             Products
           </Link>
 
+          {/* Wishlist */}
+
           <Link
             to="/wishlist"
             className="hover:text-yellow-300"
           >
-            <FaHeart />
+
+            <div className="relative">
+
+              <FaHeart />
+
+              {wishlistItems.length > 0 && (
+                <span
+                  className="
+                    absolute
+                    -top-3
+                    -right-3
+                    bg-yellow-400
+                    text-black
+                    text-[10px]
+                    rounded-full
+                    w-5
+                    h-5
+                    flex
+                    items-center
+                    justify-center
+                    font-bold
+                  "
+                >
+                  {wishlistItems.length}
+                </span>
+              )}
+
+            </div>
+
           </Link>
+
+          {/* Cart */}
 
           <Link
             to="/cart"
             className="hover:text-yellow-300"
           >
-            <FaShoppingCart />
+
+            <div className="relative">
+
+              <FaShoppingCart />
+
+              {cartItems.length > 0 && (
+                <span
+                  className="
+                    absolute
+                    -top-3
+                    -right-3
+                    bg-yellow-400
+                    text-black
+                    text-[10px]
+                    rounded-full
+                    w-5
+                    h-5
+                    flex
+                    items-center
+                    justify-center
+                    font-bold
+                  "
+                >
+                  {cartItems.length}
+                </span>
+              )}
+
+            </div>
+
           </Link>
 
           <Link

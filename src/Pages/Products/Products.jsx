@@ -70,18 +70,28 @@ function Products() {
     );
 
   if (sortBy === "low-high") {
-    filteredProducts.sort(
-      (a, b) =>
-        a.price - b.price
-    );
-  }
 
-  if (sortBy === "high-low") {
-    filteredProducts.sort(
-      (a, b) =>
-        b.price - a.price
-    );
-  }
+  filteredProducts.sort(
+    (a, b) =>
+      (a.prices?.["250g"] ||
+        a.price) -
+      (b.prices?.["250g"] ||
+        b.price)
+  );
+
+}
+
+if (sortBy === "high-low") {
+
+  filteredProducts.sort(
+    (a, b) =>
+      (b.prices?.["250g"] ||
+        b.price) -
+      (a.prices?.["250g"] ||
+        a.price)
+  );
+
+}
 
   return (
     <div className="min-h-screen flex flex-col">
