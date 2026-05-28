@@ -8,8 +8,10 @@ function WhatsappButton() {
       rel="noreferrer"
       className="
         fixed
-        bottom-6
-        right-6
+        bottom-20
+        right-4
+        md:bottom-6
+        md:right-6
         bg-green-500
         text-white
         p-4

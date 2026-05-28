@@ -8,7 +8,10 @@ from "react-router-dom";
 import MiniFooter from "../../Components/Footer/MiniFooter";
 
 function Checkout() {
-  const { cartItems } = useCart();
+  const {
+  cartItems,
+  clearCart,
+} = useCart();
 
   const [showConfirm, setShowConfirm] = useState(false);
   const navigate = useNavigate();
@@ -66,17 +69,21 @@ ${formData.pincode}
       `,
 
       products: cartItems.map((item) => ({
-        name: item.name,
-        quantity: item.quantity,
-        price: item.price,
-      })),
+  name: item.name,
+  quantity: item.quantity,
+  price: item.price,
+  weight: item.weight, 
+})),
 
       totalAmount: total,
     };
 
     // Save to MongoDB
-    await api.post("/orders", orderData);
-    navigate("/order-success");
+   await api.post("/orders", orderData);
+
+clearCart();
+
+navigate("/order-success");
 
     // WhatsApp Message
     let message = "🛒 NEW PICKLE ORDER\n\n";
@@ -374,7 +381,7 @@ ${formData.pincode}
               ) : (
                 cartItems.map((item) => (
                   <div
-                    key={item.id}
+                    key={`${item._id}-${item.weight}`}
                     className="flex justify-between items-center border-b pb-4 mb-4"
                   >
                     <div className="flex gap-3">

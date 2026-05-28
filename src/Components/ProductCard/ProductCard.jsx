@@ -130,8 +130,8 @@ const isWishlisted =
       ...product,
       weight: "250g",
       price:
-        product.prices?.["250g"] ||
-        product.price,
+  product.prices?.["250g"] ||
+  product.price,
       quantity: 1,
     });
   }}

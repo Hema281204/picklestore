@@ -2,9 +2,11 @@ import {
   Link,
   useLocation,
 } from "react-router-dom";
+
 function AdminNavbar() {
-    const location =
-  useLocation();
+  const location =
+    useLocation();
+
   return (
     <nav className="bg-red-900 text-white shadow">
 
@@ -14,55 +16,73 @@ function AdminNavbar() {
           Admin Panel
         </h1>
 
-        <div className="flex gap-6">
+        <div className="flex gap-6 items-center">
 
           <Link
-  to="/admin/dashboard"
-  className={`hover:text-yellow-300 ${
-    location.pathname ===
-    "/admin/dashboard"
-      ? "text-yellow-300 font-bold"
-      : ""
-  }`}
->
-  Dashboard
-</Link>
+            to="/admin/dashboard"
+            className={`hover:text-yellow-300 ${
+              location.pathname ===
+              "/admin/dashboard"
+                ? "text-yellow-300 font-bold"
+                : ""
+            }`}
+          >
+            Dashboard
+          </Link>
 
           <Link
-  to="/admin/products"
-  className={`hover:text-yellow-300 ${
-    location.pathname ===
-    "/admin/products"
-      ? "text-yellow-300 font-bold"
-      : ""
-  }`}
->
-  Products
-</Link>
+            to="/admin/products"
+            className={`hover:text-yellow-300 ${
+              location.pathname ===
+              "/admin/products"
+                ? "text-yellow-300 font-bold"
+                : ""
+            }`}
+          >
+            Products
+          </Link>
 
           <Link
-  to="/admin/orders"
-  className={`hover:text-yellow-300 ${
-    location.pathname ===
-    "/admin/orders"
-      ? "text-yellow-300 font-bold"
-      : ""
-  }`}
->
-  Orders
-</Link>
+            to="/admin/orders"
+            className={`hover:text-yellow-300 ${
+              location.pathname ===
+              "/admin/orders"
+                ? "text-yellow-300 font-bold"
+                : ""
+            }`}
+          >
+            Orders
+          </Link>
 
-         <Link
-  to="/admin/messages"
-  className={`hover:text-yellow-300 ${
-    location.pathname ===
-    "/admin/messages"
-      ? "text-yellow-300 font-bold"
-      : ""
-  }`}
->
-  Messages
-</Link>
+          <Link
+            to="/admin/messages"
+            className={`hover:text-yellow-300 ${
+              location.pathname ===
+              "/admin/messages"
+                ? "text-yellow-300 font-bold"
+                : ""
+            }`}
+          >
+            Messages
+          </Link>
+
+          {/* Back To Website Button */}
+
+          <Link
+            to="/"
+            className="
+              bg-white
+              text-red-900
+              px-4
+              py-2
+              rounded-lg
+              font-medium
+              hover:bg-yellow-200
+              transition
+            "
+          >
+            ← Visit Website
+          </Link>
 
         </div>
 

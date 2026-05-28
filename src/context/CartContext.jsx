@@ -93,15 +93,20 @@ useEffect(() => {
   );
 };
 
+const clearCart = () => {
+  setCartItems([]);
+};
+
   return (
     <CartContext.Provider
       value={{
-        cartItems,
-        addToCart,
-        removeFromCart,
-        increaseQuantity,
-        decreaseQuantity,
-      }}
+  cartItems,
+  addToCart,
+  removeFromCart,
+  increaseQuantity,
+  decreaseQuantity,
+  clearCart,
+}}
     >
       {children}
     </CartContext.Provider>
