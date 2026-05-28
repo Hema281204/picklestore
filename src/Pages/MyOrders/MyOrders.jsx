@@ -1,4 +1,7 @@
-import { useState } from "react";
+import {
+  useState,
+  useEffect,
+} from "react";
 import api from "../../api/api";
 import Navbar from "../../Components/Navbar/Navbar";
 import MiniFooter from "../../Components/Footer/MiniFooter";
@@ -9,24 +12,50 @@ function MyOrders() {
 
   const [orders, setOrders] =
     useState([]);
+    const [searched, setSearched] =
+  useState(false);
+
+    useEffect(() => {
+
+  const savedPhone =
+    localStorage.getItem(
+      "orderPhone"
+    );
+    
+
+  if (savedPhone) {
+
+    setPhone(savedPhone);
+
+    fetchOrders(savedPhone);
+
+  }
+
+}, []);
 
   const fetchOrders =
-    async () => {
-      try {
+  async (phoneNumber) => {
+    setSearched(true);
+    try {
 
-        const response =
-          await api.get(
-            `/orders/phone/${phone}`
-          );
-
-        setOrders(
-          response.data
+      const response =
+        await api.get(
+          `/orders/phone/${phoneNumber}`
         );
 
-      } catch (error) {
-        console.error(error);
-      }
-    };
+      setOrders(
+        response.data
+      );
+
+      localStorage.setItem(
+        "orderPhone",
+        phoneNumber
+      );
+
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const deleteOrder =
     async (id) => {
@@ -90,7 +119,9 @@ function MyOrders() {
             />
 
             <button
-              onClick={fetchOrders}
+             onClick={() =>
+  fetchOrders(phone)
+}
               className="
                 bg-red-900
                 text-white
@@ -103,8 +134,8 @@ function MyOrders() {
 
           </div>
 
-          {phone &&
-          orders.length === 0 ? (
+          {searched &&
+orders.length === 0 ? (
             <p className="text-center text-gray-500">
               No Orders Found
             </p>
