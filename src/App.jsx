@@ -31,6 +31,7 @@ from "./Components/AdminRoute";
 import AdminMessages
 from "./Pages/Admin/AdminMessages";
 import MyOrders from "./Pages/MyOrders/MyOrders";
+import MobileBottomNav from "./Components/Navbar/MobileBottomNav";
 
 
 function App() {
@@ -136,6 +137,7 @@ function App() {
 />
 
       </Routes>
+      <MobileBottomNav />
 
       <ToastContainer
   position="top-right"

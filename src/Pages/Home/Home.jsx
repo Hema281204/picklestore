@@ -87,8 +87,9 @@ useEffect(() => {
     clearInterval(interval);
 }, []);
   return (
-    <>
-      <Navbar />
+    <div className="pb-15 md:pb-0">
+
+  <Navbar />
 
       {/* Hero Section */}
       <section className="bg-[#f8f1eb]">
@@ -357,7 +358,7 @@ useEffect(() => {
       <WhatsappButton />
       <Footer />
 
-    </>
+    </div>
   );
   
 }

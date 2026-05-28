@@ -1,104 +1,188 @@
-import { Link } from "react-router-dom";
-import { FaShoppingCart } from "react-icons/fa";
-import { useCart } from "../../context/CartContext";
-import { FaHeart } from "react-icons/fa";
-import { useWishlist } from "../../context/WishlistContext";
+import {
+  Link,
+  useLocation,
+} from "react-router-dom";
+
+import {
+  FaHeart,
+  FaShoppingCart,
+  FaBars,
+  FaTimes,
+} from "react-icons/fa";
+
+import {
+  useState,
+} from "react";
 
 function Navbar() {
-  const { cartItems } = useCart();
-  const { wishlistItems } =
-  useWishlist();
+
+  const location =
+    useLocation();
+
+  const [menuOpen,
+    setMenuOpen] =
+      useState(false);
 
   return (
-    <nav className="bg-red-900 text-white p-4 shadow-md">
-      <div className="max-w-7xl mx-auto flex justify-between items-center">
+
+    <nav className="bg-red-900 text-white shadow-lg">
+
+      <div className="
+        max-w-7xl
+        mx-auto
+        px-6
+        py-4
+        flex
+        justify-between
+        items-center
+      ">
 
         {/* Logo */}
-        <h1 className="text-2xl font-bold">
-          Andhra Pickles
-        </h1>
 
-        {/* Navigation */}
-        <div className="flex items-center gap-6">
+        <Link
+          to="/"
+          className="
+            text-3xl
+            font-bold
+            leading-tight
+          "
+        >
+          Andhra
+          
+          Pickles
+        </Link>
+
+        {/* Desktop Menu */}
+
+        <div className="
+          hidden
+          md:flex
+          items-center
+          gap-8
+        ">
 
           <Link
             to="/"
-            className="hover:text-yellow-300 transition"
+            className="hover:text-yellow-300"
           >
             Home
           </Link>
 
           <Link
             to="/products"
-            className="hover:text-yellow-300 transition"
+            className="hover:text-yellow-300"
           >
             Products
           </Link>
 
           <Link
-  to="/wishlist"
-  className="relative"
->
-  <FaHeart size={22} />
+            to="/wishlist"
+            className="hover:text-yellow-300"
+          >
+            <FaHeart />
+          </Link>
 
-  {wishlistItems.length > 0 && (
-    <span
-      className="
-      absolute
-      -top-2
-      -right-2
-      bg-yellow-400
-      text-black
-      text-xs
-      w-5
-      h-5
-      rounded-full
-      flex
-      items-center
-      justify-center
-    "
-    >
-      {wishlistItems.length}
-    </span>
-  )}
-</Link>
-
-          {/* Cart */}
           <Link
             to="/cart"
-            className="relative"
+            className="hover:text-yellow-300"
           >
-            <FaShoppingCart size={24} />
-
-            {cartItems.length > 0 && (
-              <span
-                className="
-                  absolute
-                  -top-2
-                  -right-2
-                  bg-yellow-400
-                  text-black
-                  text-xs
-                  font-bold
-                  rounded-full
-                  w-5
-                  h-5
-                  flex
-                  items-center
-                  justify-center
-                "
-              >
-                {cartItems.length}
-              </span>
-            )}
+            <FaShoppingCart />
           </Link>
-          <Link to="/my-orders">
-  My Orders
-</Link>
+
+          <Link
+            to="/my-orders"
+            className="hover:text-yellow-300"
+          >
+            My Orders
+          </Link>
 
         </div>
 
+        {/* Mobile Hamburger */}
+
+        <button
+          className="
+            md:hidden
+            text-2xl
+          "
+          onClick={() =>
+            setMenuOpen(
+              !menuOpen
+            )
+          }
+        >
+
+          {menuOpen
+            ? <FaTimes />
+            : <FaBars />}
+
+        </button>
+
       </div>
+
+      {/* Mobile Menu */}
+
+      {menuOpen && (
+
+        <div className="
+          md:hidden
+          flex
+          flex-col
+          gap-5
+          px-6
+          pb-6
+          text-lg
+          bg-red-900
+        ">
+
+          <Link
+            to="/"
+            onClick={() =>
+              setMenuOpen(false)
+            }
+          >
+            Home
+          </Link>
+
+          <Link
+            to="/products"
+            onClick={() =>
+              setMenuOpen(false)
+            }
+          >
+            Products
+          </Link>
+
+          <Link
+            to="/wishlist"
+            onClick={() =>
+              setMenuOpen(false)
+            }
+          >
+            Wishlist
+          </Link>
+
+          <Link
+            to="/cart"
+            onClick={() =>
+              setMenuOpen(false)
+            }
+          >
+            Cart
+          </Link>
+
+          <Link
+            to="/my-orders"
+            onClick={() =>
+              setMenuOpen(false)
+            }
+          >
+            My Orders
+          </Link>
+
+        </div>
+      )}
+
     </nav>
   );
 }
