@@ -22,9 +22,7 @@ function AdminLogin() {
         "true"
       );
 
-      toast.success(
-        "Login Successful"
-      );
+      
 
       navigate("/admin/dashboard");
     } else {

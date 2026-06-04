@@ -76,11 +76,7 @@ function ProductCard({ product }) {
             product
           );
 
-          toast.success(
-            isWishlisted
-              ? "Removed From Wishlist"
-              : "Added To Wishlist"
-          );
+          
         }}
         className="
           absolute
