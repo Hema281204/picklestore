@@ -8,7 +8,7 @@ function MiniFooter() {
       <div className="flex justify-center items-center gap-3 text-sm">
 
         <span>
-          © {new Date().getFullYear()} Andhra Pickles
+          © {new Date().getFullYear()} Padmavathi Pickles
         </span>
 
         <Link

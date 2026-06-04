@@ -56,7 +56,7 @@ function Navbar() {
             leading-tight
           "
         >
-          Andhra Pickles
+          Padmavathi Pickles
         </Link>
 
         {/* Desktop Menu */}

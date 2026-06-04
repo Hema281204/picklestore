@@ -17,13 +17,14 @@ function Checkout() {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    address: "",
-    address2: "",
-    city: "",
-    pincode: "",
-  });
+  name: "",
+  phone: "",
+  address: "",
+  address2: "",
+  city: "",
+  pincode: "",
+  paymentMethod: "Cash on Delivery",
+});
 
   const subtotal = cartItems.reduce(
     (sum, item) => sum + item.price * item.quantity,
@@ -58,8 +59,10 @@ function Checkout() {
   const placeOrder = async () => {
   try {
     const orderData = {
-      customerName: formData.name,
-      phone: formData.phone,
+  customerName: formData.name,
+  phone: formData.phone,
+  paymentMethod:
+    formData.paymentMethod,
 
       address: `
 ${formData.address}
@@ -89,8 +92,9 @@ navigate("/order-success");
     let message = "🛒 NEW PICKLE ORDER\n\n";
 
     message += `👤 Name: ${formData.name}\n`;
-    message += `📞 Phone: ${formData.phone}\n`;
-    message += `🏠 Address: ${formData.address}\n`;
+message += `📞 Phone: ${formData.phone}\n`;
+message += `💳 Payment: ${formData.paymentMethod}\n`;
+message += `🏠 Address: ${formData.address}\n`;
 
     if (formData.address2) {
       message += `📍 Landmark: ${formData.address2}\n`;
@@ -102,15 +106,15 @@ navigate("/order-success");
     message += "📦 PRODUCTS\n\n";
 
     cartItems.forEach((item) => {
-      message += `${item.name}\n`;
-      message += `Qty: ${item.quantity}\n`;
-      message += `Amount: ₹${item.price * item.quantity}\n\n`;
-    });
+  message += `${item.name} (${item.weight})\n`;
+  message += `Qty: ${item.quantity}\n`;
+  message += `Amount: ₹${item.price * item.quantity}\n\n`;
+});
 
     message += `Total: ₹${total}`;
 
     window.open(
-      `https://wa.me/917396915829?text=${encodeURIComponent(
+      `https://wa.me/918317565117?text=${encodeURIComponent(
         message
       )}`,
       "_blank"
@@ -329,6 +333,45 @@ navigate("/order-success");
                 </div>
 
               </div>
+              <div className="mt-6">
+
+  <label className="font-medium text-gray-700 block mb-3">
+    Payment Method
+  </label>
+
+  <div className="space-y-3">
+
+    <label className="flex items-center gap-3">
+      <input
+        type="radio"
+        name="paymentMethod"
+        value="Cash on Delivery"
+        checked={
+          formData.paymentMethod ===
+          "Cash on Delivery"
+        }
+        onChange={handleChange}
+      />
+      Cash on Delivery (COD)
+    </label>
+
+    <label className="flex items-center gap-3">
+      <input
+        type="radio"
+        name="paymentMethod"
+        value="Online Payment"
+        checked={
+          formData.paymentMethod ===
+          "Online Payment"
+        }
+        onChange={handleChange}
+      />
+      Online Payment
+    </label>
+
+  </div>
+
+</div>
 
               <button
                 onClick={handleCheckout}
@@ -462,6 +505,10 @@ navigate("/order-success");
               <p>
                 <strong>Phone:</strong> {formData.phone}
               </p>
+              <p>
+  <strong>Payment:</strong>{" "}
+  {formData.paymentMethod}
+</p>
 
               <p>
                 <strong>City:</strong> {formData.city}

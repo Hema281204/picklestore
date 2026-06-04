@@ -376,11 +376,34 @@ const averageRating =
 </button>
 
               <button
-                onClick={orderWhatsapp}
-                className="bg-[#f6eee8] py-4 rounded-xl font-medium hover:bg-[#ece2da] transition"
-              >
-                Buy Now
-              </button>
+  onClick={() => {
+
+    const productUrl =
+      window.location.href;
+
+    const message =
+      `Check out this delicious ${product.name} from Andhra Pickles! 🥭\n\n${productUrl}`;
+
+    window.open(
+      `https://wa.me/?text=${encodeURIComponent(message)}`,
+      "_blank"
+    );
+
+  }}
+  className="
+    w-full
+    mt-3
+    bg-green-600
+    text-white
+    py-3
+    rounded-xl
+    font-semibold
+    hover:bg-green-700
+    transition
+  "
+>
+  📤 Share on WhatsApp
+</button>
 
               
 

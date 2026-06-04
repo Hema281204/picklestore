@@ -99,7 +99,7 @@ useEffect(() => {
 
   {/* Heading */}
   <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-    Authentic Andhra
+    Padmavathi
     <span className="text-red-900">
       {" "}Homemade Pickles
     </span>

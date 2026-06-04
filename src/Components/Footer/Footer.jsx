@@ -19,11 +19,11 @@ function Footer() {
           <div>
 
             <h2 className="text-2xl md:text-3xl font-bold">
-              Andhra Pickles
+              Padmavathi Pickles
             </h2>
 
             <p className="mt-4 text-gray-300 leading-7">
-              Authentic homemade Andhra pickles
+              Authentic Padmavathi homemade pickles
               prepared using traditional recipes
               and premium ingredients.
             </p>
@@ -96,7 +96,7 @@ function Footer() {
               <div className="flex items-center gap-3">
                 <FaPhoneAlt />
                 <a
-  href="tel:+917396915829"
+  href="tel:+918317565117"
   className="hover:text-yellow-300"
 >
   +91 7396915829
@@ -143,7 +143,7 @@ function Footer() {
          <div className="flex justify-center items-center gap-4">
 
   <span>
-    © {new Date().getFullYear()} Andhra Pickles.
+    © {new Date().getFullYear()} Padmavathi Pickles.
     All Rights Reserved.
   </span>
 
