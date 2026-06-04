@@ -51,9 +51,30 @@ function AdminProducts() {
   try {
     if (editingId) {
       await api.put(
-        `/products/${editingId}`,
-        formData
-      );
+  `/products/${editingId}`,
+  {
+    name: formData.name,
+    category: formData.category,
+    description:
+      formData.description,
+    image: formData.image,
+
+    prices: {
+      "250g":
+        Number(
+          formData.price250
+        ),
+      "500g":
+        Number(
+          formData.price500
+        ),
+      "1kg":
+        Number(
+          formData.price1000
+        ),
+    },
+  }
+);
 
       toast.success(
   "Product Updated Successfully"
@@ -131,7 +152,13 @@ price1000: "",
     description:
       product.description,
     image: product.image,
-    price: product.price,
+
+    price250:
+      product.prices?.["250g"] || "",
+    price500:
+      product.prices?.["500g"] || "",
+    price1000:
+      product.prices?.["1kg"] || "",
   });
 
   setEditingId(product._id);
@@ -217,14 +244,32 @@ const uploadImage = async (
             className="border p-3 rounded-lg"
           />
 
-          <input
-            type="text"
-            name="category"
-            placeholder="Category"
-            value={formData.category}
-            onChange={handleChange}
-            className="border p-3 rounded-lg"
-          />
+          <select
+  name="category"
+  value={formData.category}
+  onChange={handleChange}
+  className="border p-3 rounded-lg"
+>
+  <option value="">
+    Select Category
+  </option>
+
+  <option value="Veg Pickles">
+    Veg Pickles
+  </option>
+
+  <option value="Non-Veg Pickles">
+    Non-Veg Pickles
+  </option>
+
+  <option value="Traditional Snacks">
+    Traditional Snacks
+  </option>
+
+  <option value="Karampodi">
+    Karampodi
+  </option>
+</select>
 
           <input
   type="number"

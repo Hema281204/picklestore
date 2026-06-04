@@ -177,9 +177,10 @@ if (sortBy === "high-low") {
 
           {[
             "All",
-            "Veg",
-            "Non-Veg",
-            "Seafood",
+            "Veg Pickles",
+            "Non-Veg Pickles",
+            "Traditional Snacks",
+            "Karampodi",
           ].map((category) => (
             <button
               key={category}
