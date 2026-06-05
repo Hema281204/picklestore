@@ -80,6 +80,8 @@ Thank you for choosing our homemade pickles.
           { status }
         );
 
+        
+
         const order =
   orders.find(
     (o) =>
@@ -108,6 +110,42 @@ if (order) {
         );
       }
     };
+    const updatePaymentStatus =
+  async (
+    orderId,
+    paymentStatus
+  ) => {
+    try {
+
+     const response =
+  await api.put(
+    `/orders/${orderId}`,
+    {
+      paymentStatus,
+    }
+  );
+
+console.log(
+  "Updated Order:",
+  response.data
+);
+
+      toast.success(
+        "Payment Status Updated"
+      );
+
+      fetchOrders();
+
+    } catch (error) {
+
+      console.error(error);
+
+      toast.error(
+        "Failed To Update Payment Status"
+      );
+
+    }
+  };
 
     const deleteOrder =
   async (id) => {
@@ -163,9 +201,40 @@ if (order) {
   {/* Left Side */}
   <div>
 
+ <div className="flex items-center gap-3 flex-wrap">
+
   <h2 className="text-xl font-bold">
     👤 {order.customerName}
   </h2>
+
+  <select
+    value={
+      order.paymentStatus ||
+      "Pending"
+    }
+    onChange={(e) =>
+      updatePaymentStatus(
+        order._id,
+        e.target.value
+      )
+    }
+    className={`px-3 py-1 rounded-full text-sm font-semibold border-none cursor-pointer ${
+      order.paymentStatus ===
+      "Paid"
+        ? "bg-green-500 text-white"
+        : "bg-yellow-400 text-black"
+    }`}
+  >
+    <option value="Pending">
+      Pending
+    </option>
+
+    <option value="Paid">
+      Paid
+    </option>
+  </select>
+
+</div>
 
   <p className="mt-2">
     📞 {order.phone}
