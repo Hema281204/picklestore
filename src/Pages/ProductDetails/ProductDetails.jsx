@@ -381,8 +381,20 @@ const averageRating =
     const productUrl =
       window.location.href;
 
-    const message =
-      `Check out this delicious ${product.name} from Andhra Pickles! 🥭\n\n${productUrl}`;
+    const message = `
+🥭 ${product.name}
+
+💰 Price:
+₹${product.prices?.["250g"] || product.price}
+
+📦 Available Weights:
+250g | 500g | 1kg
+
+🔗 Product Link:
+${productUrl}
+
+✨ Authentic Homemade Andhra Pickles
+`;
 
     window.open(
       `https://wa.me/?text=${encodeURIComponent(message)}`,
@@ -420,6 +432,9 @@ const averageRating =
               <div className="text-center">
 
                 <FaTruck className="mx-auto text-red-900 text-2xl" />
+                <p className="mt-1 text-xs">
+                  Fast Delivery
+                </p>
 
                 
 
