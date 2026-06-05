@@ -99,14 +99,14 @@ function Footer() {
   href="tel:+918317565117"
   className="hover:text-yellow-300"
 >
-  +91 7396915829
+  +91 8317565117
 </a>
               </div>
 
               <div className="flex items-center gap-3">
                 <FaWhatsapp />
                 <a
-  href="https://wa.me/917396915829"
+  href="https://wa.me/918317565117"
   target="_blank"
   rel="noreferrer"
   className="hover:text-green-300"

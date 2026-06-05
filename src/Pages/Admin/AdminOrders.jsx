@@ -253,13 +253,17 @@ console.log(
     {order.products?.map(
       (product, index) => (
         <p
-          key={index}
-          className="text-gray-700 mt-1"
-        >
-          • {product.name}
-          {" × "}
-          {product.quantity}
-        </p>
+  key={index}
+  className="text-gray-700 mt-1"
+>
+  • {product.name}
+  <span className="text-gray-500">
+    {" "}
+    ({product.weight})
+  </span>
+  {" × "}
+  {product.quantity}
+</p>
       )
     )}
 
